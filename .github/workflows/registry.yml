@@ -8,7 +8,7 @@ on:
     - cron: '0 10 * * 1' # Weekly on Monday at 10:00
 
 jobs:
-  php81:
+  php80:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -16,11 +16,11 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@2.22
         with:
           name: mileschou/octane
-          tags: "8.1"
+          tags: "8.0"
           username: mileschou
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
-          dockerfile: 8.1/Dockerfile
+          dockerfile: 8.0/Dockerfile
 
   latest:
     runs-on: ubuntu-latest
@@ -30,8 +30,8 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@2.22
         with:
           name: mileschou/octane
-          tags: "latest,8.0"
+          tags: "latest,8.1"
           username: mileschou
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
-          dockerfile: 8.0/Dockerfile
+          dockerfile: 8.1/Dockerfile
