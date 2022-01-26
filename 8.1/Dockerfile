@@ -1,4 +1,4 @@
-FROM php:8.1-rc
+FROM php:8.1
 
 LABEL org.opencontainers.image.source="https://github.com/MilesChou/docker-octane" \
     repository="https://github.com/MilesChou/docker-octane" \
@@ -25,26 +25,14 @@ RUN set -xe && \
                 pdo_sqlite \
         && \
             pecl install \
+                mongodb \
+                redis \
                 swoole \
-                redis \
-                mongodb \
         && \
             docker-php-ext-enable \
+                mongodb \
+                redis \
                 swoole \
-                redis \
-                mongodb \
-        && \
-            pecl install \
-                redis \
-        && \
-            docker-php-ext-enable \
-                redis \
-        && \
-            pecl install \
-                mongodb \
-        && \
-            docker-php-ext-enable \
-                mongodb \
         && \
             apt-get remove --purge -y ${BUILD_DEPS} && \
             apt-get autoremove --purge -y && \
