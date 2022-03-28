@@ -25,9 +25,9 @@ RUN set -xe && \
                 pdo_sqlite \
         && \
             pecl install \
-                mongodb \
-                redis \
-                swoole \
+                mongodb-1.12.0 \
+                redis-5.3.6 \
+                swoole-4.8.6 \
         && \
             docker-php-ext-enable \
                 mongodb \
