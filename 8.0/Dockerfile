@@ -30,9 +30,9 @@ RUN set -xe && \
                 swoole-4.8.6 \
         && \
             docker-php-ext-enable \
-                swoole \
-                redis \
                 mongodb \
+                redis \
+                swoole \
         && \
             apt-get remove --purge -y ${BUILD_DEPS} && \
             apt-get autoremove --purge -y && \
