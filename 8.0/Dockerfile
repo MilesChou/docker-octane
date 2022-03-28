@@ -15,6 +15,7 @@ RUN set -xe && \
             apt-get update && \
             apt-get install --yes --no-install-recommends --no-install-suggests \
                 libpq5 \
+                rsyslog \
                 ${BUILD_DEPS} \
         && \
             docker-php-ext-install \
@@ -24,9 +25,13 @@ RUN set -xe && \
                 pdo_sqlite \
         && \
             pecl install \
+                mongodb \
+                redis \
                 swoole \
         && \
             docker-php-ext-enable \
+                mongodb \
+                redis \
                 swoole \
         && \
             pecl install \
