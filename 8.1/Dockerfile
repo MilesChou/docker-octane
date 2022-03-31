@@ -7,15 +7,16 @@ LABEL org.opencontainers.image.source="https://github.com/MilesChou/docker-octan
 # Set build deps
 ENV BUILD_DEPS \
         libpq-dev \
-        libsqlite3-dev
+        libpq5 \
+        libsqlite3-dev \
+        rsyslog \
+        libxml2-dev
 
 # See https://laravel.com/docs/8.x/deployment#server-requirements
 # See https://pecl.php.net/package/swoole
 RUN set -xe && \
             apt-get update && \
             apt-get install --yes --no-install-recommends --no-install-suggests \
-                libpq5 \
-                rsyslog \
                 ${BUILD_DEPS} \
         && \
             docker-php-ext-install \
@@ -23,6 +24,7 @@ RUN set -xe && \
                 pdo_mysql \
                 pdo_pgsql \
                 pdo_sqlite \
+                soap \
         && \
             pecl install \
                 mongodb-1.12.0 \
