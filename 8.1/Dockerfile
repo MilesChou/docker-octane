@@ -6,11 +6,12 @@ LABEL org.opencontainers.image.source="https://github.com/MilesChou/docker-octan
 
 # Set build deps
 ENV BUILD_DEPS \
+        libgmp-dev \
         libpq-dev \
         libpq5 \
         libsqlite3-dev \
-        rsyslog \
-        libxml2-dev
+        libxml2-dev \
+        rsyslog
 
 # See https://laravel.com/docs/8.x/deployment#server-requirements
 # See https://pecl.php.net/package/swoole
@@ -20,6 +21,7 @@ RUN set -xe && \
                 ${BUILD_DEPS} \
         && \
             docker-php-ext-install \
+                gmp \
                 pcntl \
                 pdo_mysql \
                 pdo_pgsql \
