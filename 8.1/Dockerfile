@@ -6,11 +6,14 @@ LABEL org.opencontainers.image.source="https://github.com/MilesChou/docker-octan
 
 # Set build deps
 ENV BUILD_DEPS \
+        libcurl4-openssl-dev \
         libgmp-dev \
         libpq-dev \
         libpq5 \
         libsqlite3-dev \
+        libssl-dev \
         libxml2-dev \
+        pkg-config \
         rsyslog
 
 # See https://laravel.com/docs/8.x/deployment#server-requirements
